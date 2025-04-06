@@ -1,5 +1,7 @@
 # server/app.py
 
+import re
+from datetime import datetime
 from flask import Flask, jsonify, request, make_response
 from flask_migrate import Migrate
 
@@ -50,7 +52,8 @@ def create_employee():
         name=data['name'],
         email=data['email'],
         salary=data.get('salary'),
-        department=data.get('department')
+        department=data.get('department'),
+        hire_date=datetime.utcnow()
     )
     db.session.add(employee)
     db.session.commit()

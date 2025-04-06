@@ -10,8 +10,8 @@ def client():
         with app.app_context():
             db.create_all()
             # Add test data
-            emp1 = Employee(name="John Doe", salary=50000)
-            emp2 = Employee(name="Jane Smith", salary=60000)
+            emp1 = Employee(name="John Doe", email="john@example.com", salary=50000)
+            emp2 = Employee(name="Jane Smith", email="jane@example.com", salary=60000)
             db.session.add_all([emp1, emp2])
             db.session.commit()
         yield client
