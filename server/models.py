@@ -15,7 +15,10 @@ class Employee(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, unique=True, nullable=False)
     salary = db.Column(db.Integer)
+    department = db.Column(db.String)
+    hire_date = db.Column(db.DateTime, server_default=db.func.now())
 
     def __repr__(self):
-        return f'<Employee {self.id}, {self.name}, {self.salary}>'
+        return f'<Employee {self.id}, {self.name}, {self.email}, {self.department}>'
